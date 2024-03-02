@@ -20,7 +20,10 @@ export default function HeroBanner() {
     const bg =
       url.backdrop +
       data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
-    setBackground(bg);
+
+    bg.toString().includes("undefined")
+      ? setBackground("./src/assets/backup.jpeg")
+      : setBackground(bg);
   }, [data]);
 
   const seachQueryHandler = (event) => {
@@ -29,6 +32,7 @@ export default function HeroBanner() {
     }
   };
 
+  console.log("background: " + background);
   return (
     <div className="heroBanner">
       {!loading && (

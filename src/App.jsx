@@ -8,6 +8,7 @@ import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import SearchResult from "./pages/searchResult/SearchResult";
+import Explore from "./pages/explore/Explore";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -33,12 +34,13 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search/:query" element={<SearchResult />} />
+        <Route path="/explore/:mediaType" element={<Explore />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
