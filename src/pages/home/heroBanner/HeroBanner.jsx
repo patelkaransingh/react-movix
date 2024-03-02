@@ -6,6 +6,7 @@ import useFetch from "../../../hooks/useFetch";
 
 import "./heroBanner.scss";
 import Img from "../../../components/lazyLoadImg/Img";
+import BackgroundFallback from "../../../assets/backup.jpeg";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 export default function HeroBanner() {
@@ -21,9 +22,9 @@ export default function HeroBanner() {
       url.backdrop +
       data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
 
-    bg.toString().includes("undefined")
-      ? setBackground("./src/assets/backup.jpeg")
-      : setBackground(bg);
+    setBackground(
+      bg.toString().includes("undefined") ? BackgroundFallback : bg
+    );
   }, [data]);
 
   const seachQueryHandler = (event) => {
@@ -32,7 +33,6 @@ export default function HeroBanner() {
     }
   };
 
-  console.log("background: " + background);
   return (
     <div className="heroBanner">
       {!loading && (
