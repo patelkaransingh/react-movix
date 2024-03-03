@@ -9,6 +9,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
+import Detail from "./pages/detail/Detail";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -21,8 +22,6 @@ export default function App() {
 
   const fetchApiConfig = () => {
     fetchDataFromApi("/configuration").then((res) => {
-      console.log(res);
-
       const url = {
         backdrop: res.images.secure_base_url + "original",
         poster: res.images.secure_base_url + "original",
@@ -55,6 +54,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:mediaType/:id" element={<Detail />} />
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
       </Routes>

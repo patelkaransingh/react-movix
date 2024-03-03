@@ -14,7 +14,13 @@ import Img from "../lazyLoadImg/Img";
 import "./carousel.scss";
 import Genres from "../genres/Genres";
 
-export default function Carousel({ data, loading, endPoint }) {
+export default function Carousel({
+  title,
+  mediaType,
+  data,
+  loading,
+  endPoint,
+}) {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -26,8 +32,6 @@ export default function Carousel({ data, loading, endPoint }) {
       dir === "left"
         ? container.scrollLeft - (container.offsetWidth + 20)
         : container.scrollLeft + (container.offsetWidth + 20);
-
-    console.log(scrollAmount);
 
     container.scrollTo({
       left: scrollAmount,
@@ -50,12 +54,13 @@ export default function Carousel({ data, loading, endPoint }) {
   return (
     <div className="carousel">
       <ContentWrapper>
+        {title && <div className="carouselTitle">{title}</div>}
         <BsFillArrowLeftCircleFill
-          className="carouselLeftNav arrow"
+          className={`carouselLeftNav arrow ${title ? "mode-2" : ""}`}
           onClick={() => navigation("left")}
         />
         <BsFillArrowRightCircleFill
-          className="carouselRighttNav arrow"
+          className={`carouselRighttNav arrow ${title ? "mode-2" : ""}`}
           onClick={() => navigation("right")}
         />
         {!loading ? (
@@ -65,13 +70,14 @@ export default function Carousel({ data, loading, endPoint }) {
                 ? url.poster + item.poster_path
                 : PosterFallback;
 
+              const _mediaType = mediaType
+                ? mediaType
+                : item.media_type || endPoint;
               return (
                 <div
                   key={item.id}
                   className="carouselItem"
-                  onClick={() =>
-                    navigate(`/${item.media_type || endPoint}/${item.id}`)
-                  }
+                  onClick={() => navigate(`/${_mediaType}/${item.id}`)}
                 >
                   <div className="posterBlock">
                     <Img src={posterUrl} />

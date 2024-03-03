@@ -6,7 +6,7 @@ import useFetch from "../../../hooks/useFetch";
 
 import "./heroBanner.scss";
 import Img from "../../../components/lazyLoadImg/Img";
-import BackgroundFallback from "../../../assets/backup.jpeg";
+import BackgroundFallback from "../../../assets/backup.jpg";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 export default function HeroBanner() {
@@ -46,7 +46,7 @@ export default function HeroBanner() {
         <div className="heroBannerContent">
           <span className="title">Welcome.</span>
           <span className="subTitle">
-            Millions of movies, TV shows and people to discover. Explore Now.
+            Millions of movies, TV shows and people to discover. Explore Now..
           </span>
           <div className="searchInput">
             <input

@@ -34,6 +34,12 @@ export default function Header() {
     [lastScrollY]
   );
 
+  const handleLogoClick = () => {
+    setShowSearch(false);
+    setMobileMunu(false);
+    navigate("/");
+  };
+
   const controlNavbar = () => {
     if (window.scrollY > 200) {
       window.scrollY > lastScrollY && !mobileMunu
@@ -75,7 +81,7 @@ export default function Header() {
     <header className={`header ${mobileMunu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" onClick={handleLogoClick} />
         </div>
         <ul className="menuItems">
           <li className="menuItem" onClick={() => navigationHandler("movie")}>
