@@ -54,15 +54,20 @@ export default function Carousel({
   return (
     <div className="carousel">
       <ContentWrapper>
-        {title && <div className="carouselTitle">{title}</div>}
-        <BsFillArrowLeftCircleFill
-          className={`carouselLeftNav arrow ${title ? "mode-2" : ""}`}
-          onClick={() => navigation("left")}
-        />
-        <BsFillArrowRightCircleFill
-          className={`carouselRighttNav arrow ${title ? "mode-2" : ""}`}
-          onClick={() => navigation("right")}
-        />
+        {data?.length > 0 && (
+          <>
+            {title && <div className="carouselTitle">{title}</div>}
+            <BsFillArrowLeftCircleFill
+              className={`carouselLeftNav arrow ${title ? "mode-2" : ""}`}
+              onClick={() => navigation("left")}
+            />
+            <BsFillArrowRightCircleFill
+              className={`carouselRighttNav arrow ${title ? "mode-2" : ""}`}
+              onClick={() => navigation("right")}
+            />
+          </>
+        )}
+
         {!loading ? (
           <div className="carouselItems" ref={carouselContainer}>
             {data?.map((item) => {

@@ -39,8 +39,6 @@ export default function DetailBanner({ video, crew }) {
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
   };
 
-  console.log(url);
-
   return (
     <div className="detailsBanner">
       {!loading ? (
@@ -76,16 +74,20 @@ export default function DetailBanner({ video, crew }) {
 
                     <div className="row">
                       <CircleRating rating={data.vote_average.toFixed(1)} />
-                      <div
-                        className="playbtn"
-                        onClick={() => {
-                          setShow(true);
-                          setVideoId(video.key);
-                        }}
-                      >
-                        <PlayIcon />
-                        <span className="text">Watch trailer</span>
-                      </div>
+                      {video?.key ? (
+                        <div
+                          className="playbtn"
+                          onClick={() => {
+                            setShow(true);
+                            setVideoId(video.key);
+                          }}
+                        >
+                          <PlayIcon />
+                          <span className="text">Watch trailer</span>
+                        </div>
+                      ) : (
+                        <span className="text">Trailer not available</span>
+                      )}
                     </div>
                     <div className="overview">
                       <div className="heading">Overview</div>

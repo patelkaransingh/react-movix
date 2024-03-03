@@ -10,8 +10,6 @@ const Recommendation = ({ mediaType, id }) => {
 
   const title = "Recommendations";
 
-  console.log(data);
-
   return (
     <Carousel
       title={title}

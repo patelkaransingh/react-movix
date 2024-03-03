@@ -33,6 +33,12 @@ export default function HeroBanner() {
     }
   };
 
+  const searchClickHandler = () => {
+    if (query !== "") {
+      navigate(`/search/${query}`);
+    }
+  };
+
   return (
     <div className="heroBanner">
       {!loading && (
@@ -55,7 +61,7 @@ export default function HeroBanner() {
               onKeyUp={seachQueryHandler}
               placeholder="Search movie or tv shows..."
             />
-            <button>Search</button>
+            <button onClick={searchClickHandler}>Search</button>
           </div>
         </div>
       </ContentWrapper>
