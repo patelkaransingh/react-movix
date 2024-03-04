@@ -72,7 +72,10 @@ export default function SearchResult() {
               </InfiniteScroll>
             </>
           ) : (
-            <span className="resultNotFound">No results found!</span>
+            <div className="noResults">
+              <img src={noResults} alt="xxxxx" />
+              <span className="resultNotFound">No results found!</span>
+            </div>
           )}
         </ContentWrapper>
       )}

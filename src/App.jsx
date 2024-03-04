@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import Detail from "./pages/detail/Detail";
+import PageNotFound from "./pages/404/PageNotFound";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/:mediaType/:id" element={<Detail />} />
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

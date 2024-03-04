@@ -2,9 +2,23 @@
 .searchResultsPage {
   min-height: 700px;
   padding-top: 100px;
-  .resultNotFound {
-    font-size: 24px;
-    color: var(--black-light);
+
+  .noResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > img {
+      width: 300px;
+      @include md {
+        width: 450px;
+      }
+    }
+
+    .resultNotFound {
+      font-size: 24px;
+      color: var(--black-light);
+    }
   }
   .pageTitle {
     font-size: 24px;
